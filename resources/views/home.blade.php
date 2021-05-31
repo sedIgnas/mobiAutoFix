@@ -13,8 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @foreach($users as $user)
+{{--                    {{ __('You are logged in as') }} {{$singleUser->}}--}}
+                            {{ __('You are logged in as') }} {{$user->role->name ?? ''}} {{ __('user') }}
 
-                    {{ __('You are logged in!') }}
+                        @endforeach
                 </div>
             </div>
         </div>

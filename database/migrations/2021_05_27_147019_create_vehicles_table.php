@@ -15,8 +15,8 @@ class CreateVehiclesTable extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('make_id')->constrained('makes');
-            $table->foreignId('model_id')->constrained('models');
+            $table->foreignId('make_id')->constrained('makes')->onDelete('cascade');
+            $table->foreignId('model_id')->constrained('vehicle_models')->onDelete('cascade');
             $table->integer('category_id');
             $table->timestamps();
         });

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ModelSeeder extends Seeder
+class VehicleModelSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class ModelSeeder extends Seeder
     public function run()
     {
         foreach ($this->models() as $model) {
-            DB::table('models')->insert([
+            DB::table('vehicle_models')->insert([
                 'name' => $model
             ]);
         }
@@ -35,8 +35,8 @@ class ModelSeeder extends Seeder
             "33",
             "C",
             "75",
-            "CCompetizione",
-            "Alfasud",
+            "Competizione",
+            "Alfas",
             "Alfetta",
             "Arna",
             "Brera",

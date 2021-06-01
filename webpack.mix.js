@@ -12,5 +12,12 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .vue()
-    .sass('resources/sass/app.scss', 'public/css');
+    .js('resources/assets/front/js/vue/src/main.js', 'public/assets/front/js/vue').vue()
+    .js('resources/assets/front/js/app.js', 'public/assets/front/js').vue()
+    .sass('resources/assets/front/sass/app.scss', 'public/assets/front/css')
+
+    .js('resources/assets/admin/js/app.js', 'public/assets/admin/js')
+    .js('resources/assets/admin/js/plugins.js', 'public/assets/admin/js')
+
+    .sass('resources/assets/admin/sass/app.scss', 'public/assets/admin/css')
+    .sass('resources/assets/admin/sass/plugins.scss', 'public/assets/admin/css');

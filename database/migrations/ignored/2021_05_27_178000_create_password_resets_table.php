@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CategoryTool extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,11 @@ class CategoryTool extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
     }
 
     /**
@@ -23,9 +27,6 @@ class CategoryTool extends Migration
      */
     public function down()
     {
-        Schema::create('category_tool', function (Blueprint $table) {
-            $table->foreignId('tool_id')->constrained('tools');
-            $table->foreignId('category_id')->constrained('categories');
-        });
+        Schema::dropIfExists('password_resets');
     }
 }

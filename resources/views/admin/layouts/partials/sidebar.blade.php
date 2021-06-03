@@ -71,7 +71,7 @@
                     <a href="{{route('admin.users.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
-                            @lang('app.users')
+                            @lang('Users')
                         </p>
                     </a>
                 </li>

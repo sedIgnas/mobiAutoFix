@@ -21,3 +21,11 @@ mix.js('resources/js/app.js', 'public/js')
 
     .sass('resources/assets/admin/sass/app.scss', 'public/assets/admin/css')
     .sass('resources/assets/admin/sass/plugins.scss', 'public/assets/admin/css');
+
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            '@': __dirname + '/resources/assets/front/js/vue/src'
+        },
+    },
+})

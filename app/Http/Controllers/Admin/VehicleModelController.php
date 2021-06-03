@@ -4,23 +4,35 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\VehicleModel;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class VehicleModelController extends Controller
 {
 
-    public function index()
+    /**
+     * @return View
+     */
+    public function index(): View
     {
         $vehicleModels = VehicleModel::get();
         return view('admin.vehicles.models.index', compact('vehicleModels'));
     }
 
-    public function create()
+    /**
+     * @return View
+     */
+    public function create(): View
     {
         return $this->edit(new VehicleModel());
     }
 
-    public function store(Request $request)
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function store(Request $request): RedirectResponse
     {
         return $this->update($request, new VehicleModel());
     }

@@ -1,4 +1,4 @@
-@extends('admin.layouts.page',['content_title'=>trans('app.users')])
+@extends('admin.layouts.page',['content_title'=>trans('Users')])
 
 @section('content')
     <?php
@@ -19,7 +19,7 @@
 
                     <div class="card card-{{$tableColor}}">
                         <div class="card-header">
-                            <h3 class="card-title">@lang('app.new_entry')</h3>
+                            <h3 class="card-title">@lang('New entry')</h3>
                         </div>
 
                         <form action="{{$route}}" method="POST" enctype="multipart/form-data">
@@ -30,52 +30,56 @@
                             @csrf()
                             <div class="card-body row">
                                 <div class="form-group col-4">
-                                    <label for="first_name">@lang('app.first_name')</label>
+                                    <label for="first_name">@lang('First Name')</label>
                                     <input type="text" class="form-control" name="first_name" id="first_name"
                                            value="{{$model->first_name ?? ''}}"
-                                           placeholder="@lang('app.enter_first_name')">
+                                           placeholder="@lang('Enter first name')">
                                 </div>
 
                                 <div class="form-group col-4">
-                                    <label for="last_name">@lang('app.last_name')</label>
+                                    <label for="last_name">@lang('Last Name')</label>
                                     <input type="text" class="form-control" name="last_name" id="last_name"
                                            value="{{$model->last_name ?? ''}}"
-                                           placeholder="@lang('app.enter_last_name')">
+                                           placeholder="@lang('Enter last name')">
                                 </div>
 
                                 <div class="form-group col-4">
-                                    <label for="email">@lang('app.email')</label>
+                                    <label for="email">@lang('Email')</label>
                                     <input type="email" class="form-control" name="email" id="email"
-                                           value="{{$model->email ?? ''}}" placeholder="@lang('app.enter_email')">
+                                           value="{{$model->email ?? ''}}" placeholder="@lang('Enter email')">
                                 </div>
 
                                 <div class="form-group col-4">
-                                    <label for="phone">@lang('app.phone')</label>
-                                    <input type="text" class="form-control" name="phone" id="phone"
-                                           value="{{$model->phone ?? ''}}" placeholder="@lang('app.enter_phone')">
+                                    <select class="form-select"
+                                            type="select" name="city_id" id="city_id">
+                                        <option selected>Select city</option>
+                                        @foreach($cities as $city)
+                                            <option value="{{$city->id}}">{{$city->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-group col-4">
-                                    <label for="address">@lang('app.address')</label>
+                                    <label for="address">@lang('Address')</label>
                                     <input type="text" class="form-control" name="address" id="address"
-                                           value="{{$model->address ?? ''}}" placeholder="@lang('app.enter_address')">
+                                           value="{{$model->address ?? ''}}" placeholder="@lang('Enter address')">
                                 </div>
 
                                 <div class="form-group col-4">
-                                    <label for="password">@lang('app.password')</label>
+                                    <label for="password">@lang('Password')</label>
                                     <input type="password" class="form-control" name="password" id="password"
-                                           value="{{$model->password ?? ''}}" placeholder="@lang('app.enter_password')">
+                                           value="{{$model->password ?? ''}}" placeholder="@lang('Enter password')">
                                 </div>
                                 <div class="form-group col-4">
                                     <input multiple type="file" name="images[]" class="images_input" id="user_images">
-                                    <label class="images" for="images">@lang('app.select_image')</label>
+                                    <label class="images" for="images">@lang('Select image')</label>
                                     <div id="image_display">
 
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">@lang('app.submit')</button>
+                                <button type="submit" class="btn btn-primary">@lang('Submit')</button>
                             </div>
                         </form>
                     </div>

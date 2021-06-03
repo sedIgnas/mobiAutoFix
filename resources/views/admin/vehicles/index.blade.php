@@ -49,7 +49,7 @@
                                                     <td>{{$vehicle->created_at ?? ''}}</td>
                                                     <td>{{$vehicle->make->name ?? ''}}</td>
                                                     <td>{{$vehicle->model->name ?? ''}}</td>
-                                                    <td>{{$vehicle->category_id ?? ''}}</td>
+                                                    <td>{{$vehicle->category->name ?? ''}}</td>
                                                     <td><a class="btn btn-info"
                                                            href="{{route('admin.vehicles.edit', $vehicle->id)}}">@lang('Edit')</a>
                                                     </td>

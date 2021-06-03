@@ -27,25 +27,28 @@
                                             <tr role="row">
                                                 <th class="sorting sorting_asc" tabindex="0" rowspan="1" colspan="1"
                                                     aria-sort="ascending">
-                                                    @lang('app.created_at')
+                                                    @lang('created_at')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.first_name')
+                                                    @lang('first_name')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.last_name')
+                                                    @lang('last_name')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.phone')
+                                                    @lang('Role')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.address')
+                                                    @lang('City')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.image')
+                                                    @lang('Address')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.actions')
+                                                    @lang('image')
+                                                </th>
+                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
+                                                    @lang('actions')
                                                 </th>
                                             </tr>
                                             </thead>
@@ -55,7 +58,8 @@
                                                     <td>{{$user->created_at ?? ''}}</td>
                                                     <td>{{$user->first_name ?? ''}}</td>
                                                     <td>{{$user->last_name ?? ''}}</td>
-                                                    <td>{{$user->phone ?? ''}}</td>
+                                                    <td>{{$user->role->name ?? ''}} level user</td>
+                                                    <td>{{$user->city->name ?? ''}}</td>
                                                     <td>{{$user->address ?? ''}}</td>
                                                     <td>
                                                         <a href="/storage/uploads/images/original/{{$user->image ?? ''}}">
@@ -63,7 +67,7 @@
                                                         </a>
                                                     </td>
                                                     <td><a class="btn btn-info"
-                                                           href="{{route('admin.users.edit', $user->id)}}">@lang('app.edit')</a>
+                                                           href="{{route('admin.users.edit', $user->id)}}">@lang('Edit')</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

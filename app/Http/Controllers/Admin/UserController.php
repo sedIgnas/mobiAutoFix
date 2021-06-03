@@ -3,6 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateUsersRequest;
+use App\Models\City;
+use App\Models\Role;
+use App\Models\User;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +21,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        return Auth::user();
+//        return Auth::user();
+        $users = User::get();
+//        $roles = Role::with('role');
+//        $cities = City::with('city');
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -25,7 +35,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return $this->edit(new User());
     }
 
     /**
@@ -34,9 +44,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+//        dd($request);
+        return $this->update($request, new User());
     }
 
     /**
@@ -53,12 +64,15 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return View
      */
-    public function edit($id)
+    public function edit(User $user): View
     {
-        //
+        $model = $user;
+        $roles = Role::get();
+        $cities = City::get();
+        return view('admin.users.edit', compact('model', 'roles', 'cities'));
     }
 
     /**
@@ -68,9 +82,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user): RedirectResponse
     {
-        //
+        $user->createUser($request);
+        return redirect()->route('admin.users.index');
     }
 
     /**

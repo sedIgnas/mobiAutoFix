@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Make;
 use App\Models\Vehicle;
+use App\Models\VehicleModel;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -11,7 +14,7 @@ class VehicleController extends Controller
 
     public function index()
     {
-        $makesModels = Vehicle::with('make', 'model')->get();
+        $makesModels = Vehicle::with('make', 'model', 'category')->get();
         $vehicles = Vehicle::get();
         return view('admin.vehicles.index', compact('vehicles', 'makesModels'));
     }
@@ -57,7 +60,10 @@ class VehicleController extends Controller
     public function edit(Vehicle $vehicle)
     {
         $model = $vehicle;
-        return view('admin.vehicles.edit', compact('model'));
+        $makes = Make::get();
+        $vehicleModels = VehicleModel::get();
+        $categories = Category::get();
+        return view('admin.vehicles.edit', compact('model', 'makes', 'vehicleModels', 'categories'));
     }
 
     /**

@@ -26,7 +26,6 @@ class User extends Authenticatable
         'email',
         'city_id',
         'address',
-        'profile_img',
         'password',
     ];
 
@@ -70,38 +69,19 @@ class User extends Authenticatable
         return $this->belongsTo(City::class);
     }
 
+    public function job()
+    {
+        return $this->belongsTo(Job::class);
+    }
+
     public function createUser($request)
     {
         DB::transaction(function () use ($request) {
-            //create user
             $this->fill($request->all())->save();
-            //create images and sync with user
-//            $this->images()->sync( $this->uploadImages($request->images)->pluck('id') );
         });
     }
-//
-//    public function uploadImages($images): collection
-//    {
-//        //upload thumb
-//        (new ImageMaker($images, ImageMaker::getThumbPath(), 100, null))->resizeImage()->upload();
-//        //upload original
-//        $imageTitles = (new ImageMaker($images, ImageMaker::getOriginalPath(), 600, null))->resizeImage()->upload();
-//        //store images
-//        return $this->storeImage($imageTitles);
-//    }
-//
-//    public function storeImage($imageTitles): collection
-//    {
-//        $storedImages = collect([]);
-//        foreach ($imageTitles as $imageTitle) {
-//            $image = (new Image())->where('title', $imageTitle)->first() ?: new Image();
-//            $image->fill(['title'=>$imageTitle])->save();
-//            $storedImages[] = $image;
-//        }
-//
-//        return $storedImages;
-//    }
 
-
-
+    public function isAdmin() {
+        return $this->role()->where('name', 'admin')->exists();
+    }
 }

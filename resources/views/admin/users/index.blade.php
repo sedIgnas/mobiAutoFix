@@ -45,9 +45,6 @@
                                                     @lang('Address')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('image')
-                                                </th>
-                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
                                                     @lang('actions')
                                                 </th>
                                             </tr>
@@ -61,11 +58,6 @@
                                                     <td>{{$user->role->name ?? ''}} level user</td>
                                                     <td>{{$user->city->name ?? ''}}</td>
                                                     <td>{{$user->address ?? ''}}</td>
-                                                    <td>
-                                                        <a href="/storage/uploads/images/original/{{$user->image ?? ''}}">
-                                                            <img src="/storage/uploads/images/thumb/{{$user->image ?? ''}}" alt="not available"/>
-                                                        </a>
-                                                    </td>
                                                     <td><a class="btn btn-info"
                                                            href="{{route('admin.users.edit', $user->id)}}">@lang('Edit')</a>
                                                     </td>

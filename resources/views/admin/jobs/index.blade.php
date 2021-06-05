@@ -1,4 +1,4 @@
-@extends('admin.layouts.page',['content_title'=>trans('app.course_requests')])
+@extends('admin.layouts.page',['content_title'=>trans('Jobs')])
 
 @section('content')
     <section class="content">
@@ -7,9 +7,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">@lang('app.list')</h3>
+                            <h3 class="card-title">@lang('List')</h3>
                             <div>
-                                <a href="{{route('admin.course_requests.create')}}" style = "float:right" class="btn btn-success" href="">@lang('app.new')</a>
+                                <a href="{{route('admin.jobs.create')}}" style = "float:right" class="btn btn-success" href="">@lang('New')</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -27,35 +27,32 @@
                                             <tr role="row">
                                                 <th class="sorting sorting_asc" tabindex="0" rowspan="1" colspan="1"
                                                     aria-sort="ascending">
-                                                    @lang('app.created_at')
+                                                    @lang('Created at')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.client')
+                                                    @lang('Job poster')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.course')
+                                                    @lang('Description')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.location')
-                                                </th>
-                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('app.actions')
+                                                    @lang('Vehicle')
+                                                </th>                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
+                                                    @lang('Location')
                                                 </th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($course_requests as $course_request)
+                                            @foreach($jobs as $job)
+{{--                                            {{$job->user_id}}--}}
                                                 <tr class="odd">
-                                                    <td>{{$course_request->created_at ?? ''}}</td>
-                                                    <td>
-                                                        {{$course_request->client ?
-                                                          $course_request->client->first_name . ' ' .
-                                                          $course_request->client->last_name: ''}}
-                                                    </td>
-                                                    <td>{{$course_request->course ?  $course_request->course->title : ''}}</td>
-                                                    <td>{{$course_request->location ?  $course_request->location->title : ''}}</td>
+                                                    <td>{{$job->created_at ?? ''}}</td>
+                                                    <td>{{$job->user->first_name ?? ''}}</td>
+                                                    <td>{{$job->description ?? ''}}</td>
+                                                    <td>{{$job->vehicle->make->name ?? ''}} {{$job->vehicle->model->name ?? ''}}</td>
+                                                    <td>{{$job->location ?? ''}}</td>
                                                     <td><a class="btn btn-info"
-                                                           href="{{route('admin.course_requests.edit', $course_request->id)}}">@lang('app.edit')</a>
+                                                           href="{{route('admin.jobs.edit', $job->id)}}">@lang('Edit')</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -71,3 +68,5 @@
         </div>
     </section>
 @endsection
+
+

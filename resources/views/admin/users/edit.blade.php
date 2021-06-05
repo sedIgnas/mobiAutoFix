@@ -35,22 +35,20 @@
                                            value="{{$model->first_name ?? ''}}"
                                            placeholder="@lang('Enter first name')">
                                 </div>
-
                                 <div class="form-group col-4">
                                     <label for="last_name">@lang('Last Name')</label>
                                     <input type="text" class="form-control" name="last_name" id="last_name"
                                            value="{{$model->last_name ?? ''}}"
                                            placeholder="@lang('Enter last name')">
                                 </div>
-
                                 <div class="form-group col-4">
                                     <label for="email">@lang('Email')</label>
                                     <input type="email" class="form-control" name="email" id="email"
                                            value="{{$model->email ?? ''}}" placeholder="@lang('Enter email')">
                                 </div>
-
                                 <div class="form-group col-4">
-                                    <select class="form-select"
+                                    <label for="city_id">@lang('Select city')</label>
+                                    <select class="form-group col-4 select2"
                                             type="select" name="city_id" id="city_id">
                                         <option selected>Select city</option>
                                         @foreach($cities as $city)
@@ -58,24 +56,15 @@
                                         @endforeach
                                     </select>
                                 </div>
-
                                 <div class="form-group col-4">
                                     <label for="address">@lang('Address')</label>
                                     <input type="text" class="form-control" name="address" id="address"
                                            value="{{$model->address ?? ''}}" placeholder="@lang('Enter address')">
                                 </div>
-
                                 <div class="form-group col-4">
                                     <label for="password">@lang('Password')</label>
                                     <input type="password" class="form-control" name="password" id="password"
                                            value="{{$model->password ?? ''}}" placeholder="@lang('Enter password')">
-                                </div>
-                                <div class="form-group col-4">
-                                    <input multiple type="file" name="images[]" class="images_input" id="user_images">
-                                    <label class="images" for="images">@lang('Select image')</label>
-                                    <div id="image_display">
-
-                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer">

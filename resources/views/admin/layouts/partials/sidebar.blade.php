@@ -76,10 +76,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.vehiclemodel.index')}}" class="nav-link">
+                    <a href="{{route('admin.jobs.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-briefcase"></i>
                         <p>
-                            @lang('app.clients')
+                            @lang('Jobs')
                         </p>
                     </a>
                 </li>

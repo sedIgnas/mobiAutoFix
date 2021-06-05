@@ -3,39 +3,38 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Job;
+use App\Models\User;
+use App\Models\Vehicle;
+use http\Client\Response;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class JobController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function index()
     {
-        //
+//        return Auth::user();
+        $jobs = Job::get();
+        $jobsWithUsers = Job::with('user');
+        return view('admin.jobs.index', compact('jobs', 'jobsWithUsers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function create()
     {
-        //
+        return $this->edit(new Job());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        return $this->update($request, new Job());
     }
 
     /**
@@ -49,27 +48,26 @@ class JobController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Job $job
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
      */
-    public function update(Request $request, $id)
+    public function edit(Job $job): View
     {
-        //
+        $model = $job;
+        $users = User::get();
+        $currentUser = Auth::user();
+        $vehicles = Vehicle::get();
+        return view('admin.jobs.edit', compact('model', 'users', 'vehicles', 'currentUser'));
+    }
+
+
+
+    public function update(Request $request, Job $job)
+    {
+        $job->createJob($request);
+        return redirect()->route('admin.jobs.index');
     }
 
     /**

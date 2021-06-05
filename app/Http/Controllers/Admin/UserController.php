@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -21,6 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        Auth::user()->isAdmin();
 //        return Auth::user();
         $users = User::get();
 //        $roles = Role::with('role');
@@ -46,7 +49,6 @@ class UserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-//        dd($request);
         return $this->update($request, new User());
     }
 

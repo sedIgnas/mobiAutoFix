@@ -31,7 +31,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')
-    ->middleware('auth')
+    ->middleware(['auth'])
     ->name('admin.')->group(function(){
         Route::get('/', [HomeController::class, 'index']);
         Route::resource('users',UserController::class);
@@ -41,6 +41,4 @@ Route::prefix('admin')
         Route::resource('jobs',JobController::class);
         Route::resource('make',MakeController::class);
         Route::resource('vehiclemodel',VehicleModelController::class);
-
-//        Route::get('course_requestss/selections',[CourseRequestController::class,'selections'])->name('course_requests.selections');
     });

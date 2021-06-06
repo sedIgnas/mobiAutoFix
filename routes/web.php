@@ -33,7 +33,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('admin')
     ->middleware(['auth'])
     ->name('admin.')->group(function(){
-        Route::get('/', [HomeController::class, 'index']);
+        Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::resource('users',UserController::class);
         Route::resource('vehicles',VehicleController::class);
         Route::resource('tools',ToolController::class);

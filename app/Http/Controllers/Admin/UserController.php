@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
 
     /**
      * Display a listing of the resource.
@@ -23,11 +28,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        Auth::user()->isAdmin();
+//        Auth::user()->isAdmin();
 //        return Auth::user();
         $users = User::get();
-//        $roles = Role::with('role');
-//        $cities = City::with('city');
         return view('admin.users.index', compact('users'));
     }
 

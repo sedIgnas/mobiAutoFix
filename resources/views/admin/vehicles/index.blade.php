@@ -52,6 +52,11 @@
                                                     <td>{{$vehicle->category->name ?? ''}}</td>
                                                     <td><a class="btn btn-info"
                                                            href="{{route('admin.vehicles.edit', $vehicle->id)}}">@lang('Edit')</a>
+                                                        <form action="{{ route('admin.vehicles.destroy',$vehicle->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             @endforeach

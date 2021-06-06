@@ -7,7 +7,10 @@ use App\Models\Category;
 use App\Models\Make;
 use App\Models\Vehicle;
 use App\Models\VehicleModel;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 
 class VehicleController extends Controller
 {
@@ -66,27 +69,25 @@ class VehicleController extends Controller
         return view('admin.vehicles.edit', compact('model', 'makes', 'vehicleModels', 'categories'));
     }
 
+
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Vehicle $vehicle
+     * @return RedirectResponse
      */
-    public function update(Request $request, Vehicle $vehicle)
+    public function update(Request $request, Vehicle $vehicle): RedirectResponse
     {
         $vehicle->fill($request->all())->save();
         return redirect()->route('admin.vehicles.index');
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Vehicle $vehicle
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Vehicle $vehicle): RedirectResponse
     {
-        //
+        $vehicle->delete();
+        return redirect()->route('admin.vehicles.index')->with('success', 'Vehicle deleted successfully');
     }
 }

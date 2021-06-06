@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="https://laravel.com/" class="brand-link">
+    <a href="{{route('admin.home')}}" class="brand-link">
         <span class="brand-text font-weight-light">@lang('Control panel')</span>
     </a>
 

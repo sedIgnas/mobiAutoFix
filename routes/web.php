@@ -28,10 +28,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/homea', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/user-logout', [App\Http\Controllers\HomeController::class, 'userLogout'])->name('user-logout');
 
 Route::prefix('admin')
-    ->middleware(['auth'])
+    ->middleware('admin')
     ->name('admin.')->group(function(){
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::resource('users',UserController::class);

@@ -1,20 +1,21 @@
 import axios from 'axios';
 
 class API {
-  static domain = 'http://courses_example.test';
+  static domain = 'http://127.0.0.1:8000';
 
-  static async getLocations() {
+  static async getVehicles() {
     try {
-      const { data } = await axios.get(`${this.domain}/api/locations`);
+      const { data } = await axios.get(`${this.domain}/api/vehicles`);
+        console.log(data);
       return data;
     } catch (err) {
       throw err.message;
     }
   }
 
-  static async postLocation(title) {
+  static async postVehicles(title) {
     try {
-      await axios.post(`${this.domain}/api/locations`, { title });
+      await axios.post(`${this.domain}/api/vehicles`, { title });
       return true;
     } catch (err) {
       throw err.message;
@@ -40,9 +41,10 @@ class API {
     }
   }
 
-  static async getCourses() {
+  static async getJobs() {
     try {
-      const { data } = await axios.get(`${this.domain}/api/courses`);
+      const { data } = await axios.get(`${this.domain}/api/jobs`);
+      console.log(data);
       return data;
     } catch (err) {
       throw err.message;

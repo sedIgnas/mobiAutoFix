@@ -6,6 +6,8 @@
 
 require('./bootstrap');
 
+import store from "../../resources/assets/front/js/vue/src/store"
+
 window.Vue = require('vue').default;
 
 /**
@@ -19,7 +21,7 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('login-form', require('./../assets/front/js/vue/src/components/loginForm').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,5 +30,6 @@ window.Vue = require('vue').default;
  */
 
 const app = new Vue({
+    store,
     el: '#app',
 });

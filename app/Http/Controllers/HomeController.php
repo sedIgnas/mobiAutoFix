@@ -33,4 +33,12 @@ class HomeController extends Controller
         return view('home', compact('users'));
 //        return view('home');
     }
+
+    public function userLogout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
 }

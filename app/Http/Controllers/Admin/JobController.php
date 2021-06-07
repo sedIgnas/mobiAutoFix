@@ -14,11 +14,10 @@ use Illuminate\Support\Facades\Redirect;
 
 class JobController extends Controller
 {
-
-
     public function index()
     {
-//        return Auth::user();
+//           $currentUser = Auth::user();
+//        return $currentUser->id;
         $jobs = Job::get();
         $jobsWithUsers = Job::with('user');
         return view('admin.jobs.index', compact('jobs', 'jobsWithUsers'));

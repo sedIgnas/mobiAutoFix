@@ -81,7 +81,15 @@ class User extends Authenticatable
         });
     }
 
-    public function isAdmin() {
-        return $this->role()->where('name', 'admin')->exists();
+    public function isAdmin()
+    {
+        if($this->role_id === 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

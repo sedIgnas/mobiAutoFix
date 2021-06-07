@@ -10,12 +10,14 @@ class ApiVehiclesController extends Controller
 {
     public function index()
     {
-        return response(Vehicle::get());
+        return response(Vehicle::with('make', 'model', 'category')->get());
     }
 
 
     public function show($id)
     {
+//        return VehicleResource::collection()
+
         $vehicle = Vehicle::with('make', 'model')->where('id', $id)->first();
 
         if(!$vehicle){

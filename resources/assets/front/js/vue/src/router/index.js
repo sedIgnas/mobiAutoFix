@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Homepage from '../views/Homepage.vue';
+import NotFound from '../views/NotFound.vue'
 
 Vue.use(VueRouter);
 
@@ -36,9 +37,10 @@ const routes = [
         component: () => import('../views/JobRequest.vue')
     },
     {
-        path :'*',
-        component:NotFound,
-    }
+        path: '*',
+        name: 'NotFound',
+        component: NotFound,
+    },
 ];
 
 const router = new VueRouter({

@@ -6,51 +6,47 @@ use App\Http\Controllers\Controller;
 use App\Models\Job;
 use App\Models\User;
 use App\Models\Vehicle;
-use http\Client\Response;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 
 class JobController extends Controller
 {
-    public function index()
+    /**
+     * @return Application|Factory|View
+     */
+    public function index(): View
     {
-//           $currentUser = Auth::user();
-//        return $currentUser->id;
         $jobs = Job::get();
         $jobsWithUsers = Job::with('user');
         return view('admin.jobs.index', compact('jobs', 'jobsWithUsers'));
     }
 
 
-
-    public function create()
+    /**
+     * @return Application|Factory|View
+     */
+    public function create(): View
     {
         return $this->edit(new Job());
     }
 
-
-    public function store(Request $request)
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function store(Request $request): RedirectResponse
     {
         return $this->update($request, new Job());
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
 
     /**
      * @param Job $job
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|View
+     * @return Application|Factory|View
      */
     public function edit(Job $job): View
     {
@@ -62,21 +58,14 @@ class JobController extends Controller
     }
 
 
-
-    public function update(Request $request, Job $job)
+    /**
+     * @param Request $request
+     * @param Job $job
+     * @return RedirectResponse
+     */
+    public function update(Request $request, Job $job): RedirectResponse
     {
         $job->createJob($request);
         return redirect()->route('admin.jobs.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

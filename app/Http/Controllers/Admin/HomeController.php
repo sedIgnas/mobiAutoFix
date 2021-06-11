@@ -8,12 +8,14 @@ use App\Models\Make;
 use App\Models\User;
 use App\Models\Vehicle;
 use App\Models\VehicleModel;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller
 {
-    public function index()
+    /**
+     * @return Renderable
+     */
+    public function index(): Renderable
     {
         $vehicles = Vehicle::get();
         $makes = Make::get();
@@ -35,6 +37,4 @@ class HomeController extends Controller
             'jobCount'
         ));
     }
-
-
 }

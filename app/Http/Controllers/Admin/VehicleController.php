@@ -7,10 +7,11 @@ use App\Models\Category;
 use App\Models\Make;
 use App\Models\Vehicle;
 use App\Models\VehicleModel;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Http\Response;
 
 class VehicleController extends Controller
 {
@@ -24,44 +25,27 @@ class VehicleController extends Controller
 
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function create()
+    public function create(): View
     {
         return $this->edit(new Vehicle());
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         return $this->update($request, new Vehicle());
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Vehicle $vehicle
+     * @return Application|Factory|View
      */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Vehicle $vehicle)
+    public function edit(Vehicle $vehicle): View
     {
         $model = $vehicle;
         $makes = Make::get();
@@ -69,7 +53,6 @@ class VehicleController extends Controller
         $categories = Category::get();
         return view('admin.vehicles.edit', compact('model', 'makes', 'vehicleModels', 'categories'));
     }
-
 
     /**
      * @param Request $request

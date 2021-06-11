@@ -30,9 +30,6 @@
                                                     @lang('Created at')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
-                                                    @lang('Job poster')
-                                                </th>
-                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
                                                     @lang('Description')
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
@@ -54,7 +51,6 @@
 {{--                                            {{$job->user_id}}--}}
                                                 <tr class="odd">
                                                     <td>{{$job->created_at ?? ''}}</td>
-                                                    <td>{{$job->user->first_name ?? ''}}</td>
                                                     <td>{{$job->description ?? ''}}</td>
                                                     <td>{{$job->vehicle->make->name ?? ''}} {{$job->vehicle->model->name ?? ''}}</td>
                                                     <td>{{$job->location ?? ''}}</td>

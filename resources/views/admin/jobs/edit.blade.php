@@ -35,6 +35,18 @@
                                            placeholder="@lang('Enter description')">
                                 </div>
                                 <div class="form-group col-4">
+                                    <label for="poster">@lang('Poster')</label>
+                                    <input type="text" class="form-control" name="poster" id="poster"
+                                           value="{{$model->poster ?? ''}}"
+                                           placeholder="@lang('Enter posters name')">
+                                </div>
+                                <div class="form-group col-4">
+                                    <label for="phone">@lang('Phone')</label>
+                                    <input type="text" class="form-control" name="phone" id="phone"
+                                           value="{{$model->phone ?? ''}}"
+                                           placeholder="@lang('Enter phone')">
+                                </div>
+                                <div class="form-group col-4">
                                     <label for="vehicle_id">@lang('Vehicle')</label>
                                     <select class="select2 w-100" aria-label="Default select example"
                                             type="select" name="vehicle_id" id="vehicle_id">

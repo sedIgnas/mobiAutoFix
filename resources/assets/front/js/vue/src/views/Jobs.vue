@@ -1,14 +1,26 @@
 <template>
     <ContainerLayout>
         <h1>All available job requests</h1>
-        <div>
+        <div v-if="!isFetching">
+            <a @click="$router.go(-1)" class="mt-3 btn btn-outline-dark">Back</a>
             <ul>
-                <li v-for="job in this.jobs" :key="job.id">
-                    <router-link :to="{ name: 'JobRequest', params: { id: job.id }}">{{ job.user.first_name }}</router-link>
-                    {{ job.location }}
+                <li class="rounded p-3 my-2 list-unstyled bg-grad" v-for="job in this.jobs" :key="job.id">
+                    <div class="d-inline-block borderRounded shadow-lg ">
+                        <div class="p-2">
+                            <p><strong>Job poster</strong>: {{ job.poster }}</p>
+                            {{ job.location }}
+                        </div>
+
+                    </div>
+                        <router-link class="text-light job-link float-right btn btn-outline-dark" :to="{ name: 'JobRequest', params: { id: job.id }}">Details</router-link>
                 </li>
             </ul>
+            <a @click="$router.go(-1)" class="mt-3 btn btn-outline-dark">Back</a>
         </div>
+        <div v-else class="text-center">
+            <b-spinner variant="primary" label="Text Centered"></b-spinner>
+        </div>
+
     </ContainerLayout>
 </template>
 
@@ -20,35 +32,37 @@ export default {
     components: {
         ContainerLayout,
     },
-    // data() {
-    //     return {
-    //         jobId: ,
-    //
-    //         // locationFilters: this.$store.getters['locations/getLocations'].map((loc) => ({
-    //         //     ...loc,
-    //         //     checked: true,
-    //         // })),
-    //     };
-    // },
+    data(){
+        return{
+            isFetching: true,
+        };
+    },
     methods: {
-        ...mapActions('jobs', ['deleteJob', 'editJob', 'getJobs']),
-        isVehicleEdited(jobId) {
-            return !!this.editedJobId && jobId === this.editedJobId;
-        },
+        ...mapActions('jobs', ['getJobs']),
         logConsole() {
-            console.log(this.jobs);
+            console.log(this.job);
         },
-
     },
     computed: {
         ...mapGetters('jobs', {
-            editedJobId: 'getEditedJobId',
             jobs: 'getJobs',
         }),
     },
     created() {
-        this.getJobs();
-        // this.$store.dispatch('jobs/getJobs');
+        this.getJobs().then(() => {
+            this.isFetching = false;
+        });
     }
 }
+
 </script>
+<style lang="scss" scoped>
+.bg-grad{
+    background: rgb(233,243,254);
+    background: linear-gradient(29deg, rgba(233,243,254,1) 0%, rgba(150,178,218,1) 100%);
+    border: 2px solid lightslategrey;
+}
+.borderRounded{
+    border-radius: 10px;
+}
+</style>

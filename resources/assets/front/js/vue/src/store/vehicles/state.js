@@ -1,5 +1,5 @@
 export default {
   vehicles: [],
-  editedVehicleId: null,
+    userVehicle: [],
   errMsg: null,
 };

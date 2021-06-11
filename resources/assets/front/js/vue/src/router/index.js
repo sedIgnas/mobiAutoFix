@@ -35,6 +35,10 @@ const routes = [
         name: 'JobRequest',
         component: () => import('../views/JobRequest.vue')
     },
+    {
+        path :'*',
+        component:NotFound,
+    }
 ];
 
 const router = new VueRouter({

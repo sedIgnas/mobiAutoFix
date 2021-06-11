@@ -16,6 +16,8 @@ class Job extends Model
         'description',
         'vehicle_id',
         'location',
+        'poster',
+        'phone'
     ];
 
     /**
@@ -34,8 +36,10 @@ class Job extends Model
         return $this->belongsTo(Vehicle::class);
     }
 
+
     public function createJob($request)
     {
+//        dd($request);
         DB::transaction(function () use ($request) {
             $this->fill($request->all())->save();
         });

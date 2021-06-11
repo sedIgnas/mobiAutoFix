@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/homea', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/user-logout', [App\Http\Controllers\HomeController::class, 'userLogout'])->name('user-logout');
 
 Route::prefix('admin')

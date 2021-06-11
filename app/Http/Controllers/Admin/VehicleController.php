@@ -10,7 +10,7 @@ use App\Models\VehicleModel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Response;
+use Illuminate\Http\Response;
 
 class VehicleController extends Controller
 {
@@ -21,6 +21,7 @@ class VehicleController extends Controller
         $vehicles = Vehicle::get();
         return view('admin.vehicles.index', compact('vehicles', 'makesModels'));
     }
+
 
     /**
      * Show the form for creating a new resource.

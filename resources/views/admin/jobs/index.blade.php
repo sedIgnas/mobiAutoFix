@@ -37,8 +37,15 @@
                                                 </th>
                                                 <th class="sorting" tabindex="0" rowspan="1" colspan="1">
                                                     @lang('Vehicle')
-                                                </th>                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
+                                                </th>
+                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
                                                     @lang('Location')
+                                                </th>
+                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
+                                                    @lang('Poster')
+                                                </th>
+                                                <th class="sorting" tabindex="0" rowspan="1" colspan="1">
+                                                    @lang('Phone')
                                                 </th>
                                             </tr>
                                             </thead>
@@ -51,6 +58,8 @@
                                                     <td>{{$job->description ?? ''}}</td>
                                                     <td>{{$job->vehicle->make->name ?? ''}} {{$job->vehicle->model->name ?? ''}}</td>
                                                     <td>{{$job->location ?? ''}}</td>
+                                                    <td>{{$job->poster ?? ''}}</td>
+                                                    <td>{{$job->phone ?? ''}}</td>
                                                     <td><a class="btn btn-info"
                                                            href="{{route('admin.jobs.edit', $job->id)}}">@lang('Edit')</a>
                                                     </td>

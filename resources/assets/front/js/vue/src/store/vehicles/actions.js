@@ -10,44 +10,13 @@ export default {
     }
   },
 
-  async createJob({ commit }, title) {
-    try {
-      await API.postJob(title);
-      const jobs = await API.getJobs();
-      commit('SAVE_JOBS', jobs);
-    } catch (errMsg) {
-      commit('SAVE_ERROR', errMsg);
-    }
-  },
+    async getUserVehicle({ commit }, id) {
+        try {
+            const userVehicle = await API.getUserVehicle(id);
+            commit('SAVE_USER_VEHICLE', userVehicle);
+        } catch (errMsg) {
+            commit('SAVE_ERROR', errMsg);
+        }
+    },
 
-    editVehicle({ commit, state }, id) {
-    const cancelJobEditing = state.editedJobId === id;
-    if (cancelJobEditing) {
-      commit('SET_EDITED_JOB', null);
-    } else {
-      commit('SET_EDITED_JOB', id);
-    }
-  },
-
-  async updateJob({ commit, dispatch, state }, formData) {
-    try {
-      await API.patchJob({
-        ...formData,
-        id: state.editedJobId,
-      });
-      commit('SET_EDITED_JOB', null);
-      dispatch('getJobs');
-    } catch (errMsg) {
-      commit('SAVE_ERROR', errMsg);
-    }
-  },
-
-  async deleteVehicle({ commit, dispatch }, id) {
-    try {
-      await API.deleteJob(id);
-      dispatch('getJobs');
-    } catch (errMsg) {
-      commit('SAVE_ERROR', errMsg);
-    }
-  },
 };

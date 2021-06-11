@@ -15,21 +15,22 @@ class ApiJobsController extends Controller
     public function index()
     {
 
-        return response(Job::with('user')->get());   // su relationu
+        return response(Job::with('user', 'vehicle')->get());   // su relationu
 //        return JobResource::collection(Job::all());  // su resursu, be relation
     }
 
 
     public function show($id)
     {
+        return Job::where('id', $id)->get();
+    }
 
-        return JobResource::collection(Job::all());
-//        $job = Job::with('user')->where('id',$id)->first();
-//
-//        if(!$job){
-//            return response(['status' => 404, 'message'=>'job not found']);
-//        }
-//
-//        return response($job);
+
+    public function store(Request $request)
+    {
+
+        $job = new Job;
+        $job->createJob($request);
+        $job->save();
     }
 }

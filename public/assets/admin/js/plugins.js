@@ -6817,10 +6817,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -6859,20 +6855,19 @@ var API = /*#__PURE__*/function () {
               case 3:
                 _yield$axios$get = _context.sent;
                 data = _yield$axios$get.data;
-                console.log(data);
                 return _context.abrupt("return", data);
 
-              case 9:
-                _context.prev = 9;
+              case 8:
+                _context.prev = 8;
                 _context.t0 = _context["catch"](0);
                 throw _context.t0.message;
 
-              case 12:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 9]]);
+        }, _callee, this, [[0, 8]]);
       }));
 
       function getVehicles() {
@@ -6882,62 +6877,66 @@ var API = /*#__PURE__*/function () {
       return getVehicles;
     }()
   }, {
-    key: "postVehicles",
+    key: "getUserVehicle",
     value: function () {
-      var _postVehicles = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(title) {
+      var _getUserVehicle = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(id) {
+        var _yield$axios$get2, data;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(this.domain, "/api/vehicles"), {
-                  title: title
-                });
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(this.domain, "/api/vehicles/vehicle/").concat(id));
 
               case 3:
-                return _context2.abrupt("return", true);
+                _yield$axios$get2 = _context2.sent;
+                data = _yield$axios$get2.data;
+                console.log(data[0]);
+                return _context2.abrupt("return", data);
 
-              case 6:
-                _context2.prev = 6;
+              case 9:
+                _context2.prev = 9;
                 _context2.t0 = _context2["catch"](0);
                 throw _context2.t0.message;
 
-              case 9:
+              case 12:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 6]]);
+        }, _callee2, this, [[0, 9]]);
       }));
 
-      function postVehicles(_x) {
-        return _postVehicles.apply(this, arguments);
+      function getUserVehicle(_x) {
+        return _getUserVehicle.apply(this, arguments);
       }
 
-      return postVehicles;
+      return getUserVehicle;
     }()
   }, {
-    key: "patchLocation",
+    key: "postJob",
     value: function () {
-      var _patchLocation = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(_ref) {
-        var id, body;
+      var _postJob = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(body) {
+        var _yield$axios$post, data;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                id = _ref.id, body = _objectWithoutProperties(_ref, ["id"]);
-                console.log(body);
-                _context3.prev = 2;
-                _context3.next = 5;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().patch("".concat(this.domain, "/api/locations/").concat(id), body);
+                _context3.prev = 0;
+                _context3.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(this.domain, "/api/jobs/create"), body);
 
-              case 5:
-                return _context3.abrupt("return", true);
+              case 3:
+                _yield$axios$post = _context3.sent;
+                data = _yield$axios$post.data;
+                return _context3.abrupt("return", data);
 
               case 8:
                 _context3.prev = 8;
-                _context3.t0 = _context3["catch"](2);
+                _context3.t0 = _context3["catch"](0);
                 throw _context3.t0.message;
 
               case 11:
@@ -6945,54 +6944,58 @@ var API = /*#__PURE__*/function () {
                 return _context3.stop();
             }
           }
-        }, _callee3, this, [[2, 8]]);
+        }, _callee3, this, [[0, 8]]);
       }));
 
-      function patchLocation(_x2) {
-        return _patchLocation.apply(this, arguments);
+      function postJob(_x2) {
+        return _postJob.apply(this, arguments);
       }
 
-      return patchLocation;
+      return postJob;
     }()
   }, {
-    key: "deleteLocation",
+    key: "getJobs",
     value: function () {
-      var _deleteLocation = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(id) {
+      var _getJobs = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        var _yield$axios$get3, data;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().delete("".concat(this.domain, "/api/locations/").concat(id));
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(this.domain, "/api/jobs"));
 
               case 3:
-                return _context4.abrupt("return", true);
+                _yield$axios$get3 = _context4.sent;
+                data = _yield$axios$get3.data;
+                return _context4.abrupt("return", data);
 
-              case 6:
-                _context4.prev = 6;
+              case 8:
+                _context4.prev = 8;
                 _context4.t0 = _context4["catch"](0);
                 throw _context4.t0.message;
 
-              case 9:
+              case 11:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, this, [[0, 6]]);
+        }, _callee4, this, [[0, 8]]);
       }));
 
-      function deleteLocation(_x3) {
-        return _deleteLocation.apply(this, arguments);
+      function getJobs() {
+        return _getJobs.apply(this, arguments);
       }
 
-      return deleteLocation;
+      return getJobs;
     }()
   }, {
-    key: "getJobs",
+    key: "getJob",
     value: function () {
-      var _getJobs = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
-        var _yield$axios$get2, data;
+      var _getJob = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(id) {
+        var _yield$axios$get4, data;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
           while (1) {
@@ -7000,11 +7003,11 @@ var API = /*#__PURE__*/function () {
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(this.domain, "/api/jobs"));
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(this.domain, "/api/jobs/").concat(id));
 
               case 3:
-                _yield$axios$get2 = _context5.sent;
-                data = _yield$axios$get2.data;
+                _yield$axios$get4 = _context5.sent;
+                data = _yield$axios$get4.data;
                 console.log(data);
                 return _context5.abrupt("return", data);
 
@@ -7021,83 +7024,11 @@ var API = /*#__PURE__*/function () {
         }, _callee5, this, [[0, 9]]);
       }));
 
-      function getJobs() {
-        return _getJobs.apply(this, arguments);
+      function getJob(_x3) {
+        return _getJob.apply(this, arguments);
       }
 
-      return getJobs;
-    }()
-  }, {
-    key: "postCourse",
-    value: function () {
-      var _postCourse = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6(body) {
-        var _yield$axios$post, data;
-
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                _context6.prev = 0;
-                _context6.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post("".concat(this.domain, "/api/courses"), body);
-
-              case 3:
-                _yield$axios$post = _context6.sent;
-                data = _yield$axios$post.data;
-                return _context6.abrupt("return", data.courses);
-
-              case 8:
-                _context6.prev = 8;
-                _context6.t0 = _context6["catch"](0);
-                throw _context6.t0.message;
-
-              case 11:
-              case "end":
-                return _context6.stop();
-            }
-          }
-        }, _callee6, this, [[0, 8]]);
-      }));
-
-      function postCourse(_x4) {
-        return _postCourse.apply(this, arguments);
-      }
-
-      return postCourse;
-    }()
-  }, {
-    key: "deleteCourse",
-    value: function () {
-      var _deleteCourse = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7(id) {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
-          while (1) {
-            switch (_context7.prev = _context7.next) {
-              case 0:
-                _context7.prev = 0;
-                _context7.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().delete("".concat(this.domain, "/api/courses/").concat(id));
-
-              case 3:
-                return _context7.abrupt("return", true);
-
-              case 6:
-                _context7.prev = 6;
-                _context7.t0 = _context7["catch"](0);
-                throw _context7.t0.message;
-
-              case 9:
-              case "end":
-                return _context7.stop();
-            }
-          }
-        }, _callee7, this, [[0, 6]]);
-      }));
-
-      function deleteCourse(_x5) {
-        return _deleteCourse.apply(this, arguments);
-      }
-
-      return deleteCourse;
+      return getJob;
     }()
   }]);
 
@@ -7132,236 +7063,6 @@ var dateStr2yyyymmdd = function dateStr2yyyymmdd(dateStr) {
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   dateStr2yyyymmdd: dateStr2yyyymmdd
-});
-
-/***/ }),
-
-/***/ "./resources/assets/front/js/vue/src/store/courses/actions.js":
-/*!********************************************************************!*\
-  !*** ./resources/assets/front/js/vue/src/store/courses/actions.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api */ "./resources/assets/front/js/vue/src/api/index.js");
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  getCourses: function getCourses(_ref) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var commit, courses;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              commit = _ref.commit;
-              _context.prev = 1;
-              _context.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.getCourses();
-
-            case 4:
-              courses = _context.sent;
-              commit('SAVE_COURSES', courses);
-              _context.next = 11;
-              break;
-
-            case 8:
-              _context.prev = 8;
-              _context.t0 = _context["catch"](1);
-              commit('SAVE_ERROR', _context.t0);
-
-            case 11:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[1, 8]]);
-    }))();
-  },
-  deleteCourse: function deleteCourse(_ref2, id) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var commit, dispatch;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              commit = _ref2.commit, dispatch = _ref2.dispatch;
-              _context2.prev = 1;
-              _context2.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.deleteCourse(id);
-
-            case 4:
-              dispatch('getCourses');
-              _context2.next = 10;
-              break;
-
-            case 7:
-              _context2.prev = 7;
-              _context2.t0 = _context2["catch"](1);
-              commit('SAVE_ERROR', _context2.t0);
-
-            case 10:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2, null, [[1, 7]]);
-    }))();
-  },
-  createCourse: function createCourse(_ref3, newCourseData) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var commit, dispatch;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              commit = _ref3.commit, dispatch = _ref3.dispatch;
-              _context3.prev = 1;
-              _context3.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.postCourse(newCourseData);
-
-            case 4:
-              dispatch('getCourses');
-              _context3.next = 10;
-              break;
-
-            case 7:
-              _context3.prev = 7;
-              _context3.t0 = _context3["catch"](1);
-              commit('SAVE_ERROR', _context3.t0);
-
-            case 10:
-            case "end":
-              return _context3.stop();
-          }
-        }
-      }, _callee3, null, [[1, 7]]);
-    }))();
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/assets/front/js/vue/src/store/courses/getters.js":
-/*!********************************************************************!*\
-  !*** ./resources/assets/front/js/vue/src/store/courses/getters.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  getCoursesByLocations: function getCoursesByLocations(state) {
-    return function (locationIds) {
-      return state.courses.filter(function (course) {
-        return course.locations.some(function (courseLoc) {
-          return locationIds.includes(courseLoc);
-        });
-      });
-    };
-  },
-  getCourseTitles: function getCourseTitles(state) {
-    return function (courseIds) {
-      return courseIds.map(function (id) {
-        return state.courses.find(function (l) {
-          return l.id === id;
-        }).title;
-      });
-    };
-  },
-  getCourseTitlesAndIds: function getCourseTitlesAndIds(state) {
-    return state.courses.map(function (_ref) {
-      var id = _ref.id,
-          title = _ref.title;
-      return {
-        id: id,
-        title: title
-      };
-    });
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/assets/front/js/vue/src/store/courses/index.js":
-/*!******************************************************************!*\
-  !*** ./resources/assets/front/js/vue/src/store/courses/index.js ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/assets/front/js/vue/src/store/courses/state.js");
-/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mutations */ "./resources/assets/front/js/vue/src/store/courses/mutations.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/assets/front/js/vue/src/store/courses/actions.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getters */ "./resources/assets/front/js/vue/src/store/courses/getters.js");
-
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  namespaced: true,
-  state: _state__WEBPACK_IMPORTED_MODULE_0__.default,
-  mutations: _mutations__WEBPACK_IMPORTED_MODULE_1__.default,
-  actions: _actions__WEBPACK_IMPORTED_MODULE_2__.default,
-  getters: _getters__WEBPACK_IMPORTED_MODULE_3__.default
-});
-
-/***/ }),
-
-/***/ "./resources/assets/front/js/vue/src/store/courses/mutations.js":
-/*!**********************************************************************!*\
-  !*** ./resources/assets/front/js/vue/src/store/courses/mutations.js ***!
-  \**********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  SAVE_COURSES: function SAVE_COURSES(state, courses) {
-    state.courses = courses;
-  },
-  SAVE_ERROR: function SAVE_ERROR(state, errMsg) {
-    state.errMsg = errMsg;
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/assets/front/js/vue/src/store/courses/state.js":
-/*!******************************************************************!*\
-  !*** ./resources/assets/front/js/vue/src/store/courses/state.js ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  courses: [],
-  errMsg: null
 });
 
 /***/ }),
@@ -7486,15 +7187,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _rootActions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rootActions */ "./resources/assets/front/js/vue/src/store/rootActions.js");
 /* harmony import */ var _rootGetters__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rootGetters */ "./resources/assets/front/js/vue/src/store/rootGetters.js");
-/* harmony import */ var _courses__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./courses */ "./resources/assets/front/js/vue/src/store/courses/index.js");
-/* harmony import */ var _locations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./locations */ "./resources/assets/front/js/vue/src/store/locations/index.js");
-/* harmony import */ var _currentUser__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./currentUser */ "./resources/assets/front/js/vue/src/store/currentUser/index.js");
-/* harmony import */ var _vehicles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./vehicles */ "./resources/assets/front/js/vue/src/store/vehicles/index.js");
-/* harmony import */ var _jobs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./jobs */ "./resources/assets/front/js/vue/src/store/jobs/index.js");
+/* harmony import */ var _currentUser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./currentUser */ "./resources/assets/front/js/vue/src/store/currentUser/index.js");
+/* harmony import */ var _vehicles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vehicles */ "./resources/assets/front/js/vue/src/store/vehicles/index.js");
+/* harmony import */ var _jobs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./jobs */ "./resources/assets/front/js/vue/src/store/jobs/index.js");
 
 
 
@@ -7502,18 +7201,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-vue__WEBPACK_IMPORTED_MODULE_7__.default.use(vuex__WEBPACK_IMPORTED_MODULE_8__.default);
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_8__.default.Store({
+vue__WEBPACK_IMPORTED_MODULE_5__.default.use(vuex__WEBPACK_IMPORTED_MODULE_6__.default);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vuex__WEBPACK_IMPORTED_MODULE_6__.default.Store({
   actions: _rootActions__WEBPACK_IMPORTED_MODULE_0__.default,
   getters: _rootGetters__WEBPACK_IMPORTED_MODULE_1__.default,
   modules: {
-    courses: _courses__WEBPACK_IMPORTED_MODULE_2__.default,
-    locations: _locations__WEBPACK_IMPORTED_MODULE_3__.default,
-    currentUser: _currentUser__WEBPACK_IMPORTED_MODULE_4__.default,
-    vehicles: _vehicles__WEBPACK_IMPORTED_MODULE_5__.default,
-    jobs: _jobs__WEBPACK_IMPORTED_MODULE_6__.default
+    currentUser: _currentUser__WEBPACK_IMPORTED_MODULE_2__.default,
+    vehicles: _vehicles__WEBPACK_IMPORTED_MODULE_3__.default,
+    jobs: _jobs__WEBPACK_IMPORTED_MODULE_4__.default
   }
 }));
 
@@ -7533,12 +7228,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api */ "./resources/assets/front/js/vue/src/api/index.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -7561,27 +7250,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 4:
               jobs = _context.sent;
-              console.log(jobs);
               commit('SAVE_JOBS', jobs);
-              _context.next = 12;
+              _context.next = 11;
               break;
 
-            case 9:
-              _context.prev = 9;
+            case 8:
+              _context.prev = 8;
               _context.t0 = _context["catch"](1);
               commit('SAVE_ERROR', _context.t0);
 
-            case 12:
+            case 11:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[1, 9]]);
+      }, _callee, null, [[1, 8]]);
     }))();
   },
-  createJob: function createJob(_ref2, title) {
+  getJob: function getJob(_ref2, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var commit, jobs;
+      var commit, job;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -7589,59 +7277,42 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               commit = _ref2.commit;
               _context2.prev = 1;
               _context2.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.postJob(title);
+              return _api__WEBPACK_IMPORTED_MODULE_1__.default.getJob(id);
 
             case 4:
-              _context2.next = 6;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.getJobs();
-
-            case 6:
-              jobs = _context2.sent;
-              commit('SAVE_JOBS', jobs);
-              _context2.next = 13;
+              job = _context2.sent;
+              commit('SAVE_JOB', job);
+              _context2.next = 11;
               break;
 
-            case 10:
-              _context2.prev = 10;
+            case 8:
+              _context2.prev = 8;
               _context2.t0 = _context2["catch"](1);
               commit('SAVE_ERROR', _context2.t0);
 
-            case 13:
+            case 11:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[1, 10]]);
+      }, _callee2, null, [[1, 8]]);
     }))();
   },
-  editJob: function editJob(_ref3, id) {
-    var commit = _ref3.commit,
-        state = _ref3.state;
-    var cancelJobEditing = state.editedJobId === id;
-
-    if (cancelJobEditing) {
-      commit('SET_EDITED_JOB', null);
-    } else {
-      commit('SET_EDITED_JOB', id);
-    }
-  },
-  updateJob: function updateJob(_ref4, formData) {
+  getUserVehicle: function getUserVehicle(_ref3, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var commit, dispatch, state;
+      var commit, userVehicle;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              commit = _ref4.commit, dispatch = _ref4.dispatch, state = _ref4.state;
+              commit = _ref3.commit;
               _context3.prev = 1;
               _context3.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.patchLJob(_objectSpread(_objectSpread({}, formData), {}, {
-                id: state.editedJobId
-              }));
+              return _api__WEBPACK_IMPORTED_MODULE_1__.default.getUserVehicle(id);
 
             case 4:
-              commit('SET_EDITED_JOB', null);
-              dispatch('getJobs');
+              userVehicle = _context3.sent;
+              commit('SAVE_USER_VEHICLE', userVehicle);
               _context3.next = 11;
               break;
 
@@ -7658,17 +7329,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee3, null, [[1, 8]]);
     }))();
   },
-  deleteJob: function deleteJob(_ref5, id) {
+  createJob: function createJob(_ref4, jobData) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
       var commit, dispatch;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              commit = _ref5.commit, dispatch = _ref5.dispatch;
+              commit = _ref4.commit, dispatch = _ref4.dispatch;
               _context4.prev = 1;
               _context4.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.deleteJob(id);
+              return _api__WEBPACK_IMPORTED_MODULE_1__.default.postJob(jobData);
 
             case 4:
               dispatch('getJobs');
@@ -7704,43 +7375,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  getJobTitles: function getJobTitles(state) {
-    return function (jobs) {
-      return jobs.map(function (job) {
-        return state.jobs.find(function (stateJob) {
-          return stateJob.id === job.id;
-        }).title;
-      });
-    };
-  },
-  getEditedJobId: function getEditedJobId(state) {
-    var _state$editedJobId;
-
-    return (_state$editedJobId = state.editedJobId) !== null && _state$editedJobId !== void 0 ? _state$editedJobId : false;
-  },
-  getJobIsEdited: function getJobIsEdited(state) {
-    return !!state.editedJobId;
-  },
-  getEditedJob: function getEditedJob(state) {
-    var _state$jobs$find;
-
-    return (_state$jobs$find = state.jobs.find(function (_ref) {
-      var id = _ref.id;
-      return id === state.editedJobId;
-    })) !== null && _state$jobs$find !== void 0 ? _state$jobs$find : false;
+  getUserVehicle: function getUserVehicle(state) {
+    return state.userVehicle;
   },
   getJobs: function getJobs(state) {
     return state.jobs;
   },
-  getJobTitlesAndIds: function getJobTitlesAndIds(state) {
-    return state.job.map(function (_ref2) {
-      var id = _ref2.id,
-          title = _ref2.title;
-      return {
-        id: id,
-        title: title
-      };
-    });
+  getJob: function getJob(state) {
+    return state.job;
   }
 });
 
@@ -7790,12 +7432,14 @@ __webpack_require__.r(__webpack_exports__);
   ADD_JOB: function ADD_JOB(state, item) {
     state.jobs.push(item);
   },
-  SET_EDITED_ADD_JOB: function SET_EDITED_ADD_JOB(state, id) {
-    state.editedJobId = id;
-  },
   SAVE_JOBS: function SAVE_JOBS(state, jobs) {
     state.jobs = jobs;
-    console.log(state.jobs);
+  },
+  SAVE_JOB: function SAVE_JOB(state, job) {
+    state.job = job;
+  },
+  SAVE_USER_VEHICLE: function SAVE_USER_VEHICLE(state, userVehicle) {
+    state.userVehicle = userVehicle;
   },
   SAVE_ERROR: function SAVE_ERROR(state, errMsg) {
     state.errMsg = errMsg;
@@ -7817,309 +7461,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   jobs: [],
+  job: [],
+  userVehicle: [],
   editedJobId: null,
-  errMsg: null
-});
-
-/***/ }),
-
-/***/ "./resources/assets/front/js/vue/src/store/locations/actions.js":
-/*!**********************************************************************!*\
-  !*** ./resources/assets/front/js/vue/src/store/locations/actions.js ***!
-  \**********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api */ "./resources/assets/front/js/vue/src/api/index.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  getLocations: function getLocations(_ref) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var commit, locations;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              commit = _ref.commit;
-              _context.prev = 1;
-              _context.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.getLocations();
-
-            case 4:
-              locations = _context.sent;
-              commit('SAVE_LOCATIONS', locations);
-              _context.next = 11;
-              break;
-
-            case 8:
-              _context.prev = 8;
-              _context.t0 = _context["catch"](1);
-              commit('SAVE_ERROR', _context.t0);
-
-            case 11:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[1, 8]]);
-    }))();
-  },
-  createLocation: function createLocation(_ref2, title) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var commit, locations;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              commit = _ref2.commit;
-              _context2.prev = 1;
-              _context2.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.postLocation(title);
-
-            case 4:
-              _context2.next = 6;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.getLocations();
-
-            case 6:
-              locations = _context2.sent;
-              commit('SAVE_LOCATIONS', locations);
-              _context2.next = 13;
-              break;
-
-            case 10:
-              _context2.prev = 10;
-              _context2.t0 = _context2["catch"](1);
-              commit('SAVE_ERROR', _context2.t0);
-
-            case 13:
-            case "end":
-              return _context2.stop();
-          }
-        }
-      }, _callee2, null, [[1, 10]]);
-    }))();
-  },
-  editLocation: function editLocation(_ref3, id) {
-    var commit = _ref3.commit,
-        state = _ref3.state;
-    var cancelLocationEditing = state.editedLocationId === id;
-
-    if (cancelLocationEditing) {
-      commit('SET_EDITED_LOCATION', null);
-    } else {
-      commit('SET_EDITED_LOCATION', id);
-    }
-  },
-  updateLocation: function updateLocation(_ref4, formData) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var commit, dispatch, state;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              commit = _ref4.commit, dispatch = _ref4.dispatch, state = _ref4.state;
-              _context3.prev = 1;
-              _context3.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.patchLocation(_objectSpread(_objectSpread({}, formData), {}, {
-                id: state.editedLocationId
-              }));
-
-            case 4:
-              commit('SET_EDITED_LOCATION', null);
-              dispatch('getLocations');
-              _context3.next = 11;
-              break;
-
-            case 8:
-              _context3.prev = 8;
-              _context3.t0 = _context3["catch"](1);
-              commit('SAVE_ERROR', _context3.t0);
-
-            case 11:
-            case "end":
-              return _context3.stop();
-          }
-        }
-      }, _callee3, null, [[1, 8]]);
-    }))();
-  },
-  deleteLocation: function deleteLocation(_ref5, id) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-      var commit, dispatch;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
-        while (1) {
-          switch (_context4.prev = _context4.next) {
-            case 0:
-              commit = _ref5.commit, dispatch = _ref5.dispatch;
-              _context4.prev = 1;
-              _context4.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.deleteLocation(id);
-
-            case 4:
-              dispatch('getLocations');
-              _context4.next = 10;
-              break;
-
-            case 7:
-              _context4.prev = 7;
-              _context4.t0 = _context4["catch"](1);
-              commit('SAVE_ERROR', _context4.t0);
-
-            case 10:
-            case "end":
-              return _context4.stop();
-          }
-        }
-      }, _callee4, null, [[1, 7]]);
-    }))();
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/assets/front/js/vue/src/store/locations/getters.js":
-/*!**********************************************************************!*\
-  !*** ./resources/assets/front/js/vue/src/store/locations/getters.js ***!
-  \**********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  getLocationTitles: function getLocationTitles(state) {
-    return function (locations) {
-      return locations.map(function (location) {
-        return state.locations.find(function (stateLocation) {
-          return stateLocation.id === location.id;
-        }).title;
-      });
-    };
-  },
-  getEditedLocationId: function getEditedLocationId(state) {
-    var _state$editedLocation;
-
-    return (_state$editedLocation = state.editedLocationId) !== null && _state$editedLocation !== void 0 ? _state$editedLocation : false;
-  },
-  getLocationIsEdited: function getLocationIsEdited(state) {
-    return !!state.editedLocationId;
-  },
-  getEditedLocation: function getEditedLocation(state) {
-    var _state$locations$find;
-
-    return (_state$locations$find = state.locations.find(function (_ref) {
-      var id = _ref.id;
-      return id === state.editedLocationId;
-    })) !== null && _state$locations$find !== void 0 ? _state$locations$find : false;
-  },
-  getLocations: function getLocations(state) {
-    return state.locations;
-  },
-  getLocationTitlesAndIds: function getLocationTitlesAndIds(state) {
-    return state.locations.map(function (_ref2) {
-      var id = _ref2.id,
-          title = _ref2.title;
-      return {
-        id: id,
-        title: title
-      };
-    });
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/assets/front/js/vue/src/store/locations/index.js":
-/*!********************************************************************!*\
-  !*** ./resources/assets/front/js/vue/src/store/locations/index.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _state__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./state */ "./resources/assets/front/js/vue/src/store/locations/state.js");
-/* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mutations */ "./resources/assets/front/js/vue/src/store/locations/mutations.js");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./resources/assets/front/js/vue/src/store/locations/actions.js");
-/* harmony import */ var _getters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getters */ "./resources/assets/front/js/vue/src/store/locations/getters.js");
-
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  namespaced: true,
-  state: _state__WEBPACK_IMPORTED_MODULE_0__.default,
-  mutations: _mutations__WEBPACK_IMPORTED_MODULE_1__.default,
-  actions: _actions__WEBPACK_IMPORTED_MODULE_2__.default,
-  getters: _getters__WEBPACK_IMPORTED_MODULE_3__.default
-});
-
-/***/ }),
-
-/***/ "./resources/assets/front/js/vue/src/store/locations/mutations.js":
-/*!************************************************************************!*\
-  !*** ./resources/assets/front/js/vue/src/store/locations/mutations.js ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  ADD_LOCATION: function ADD_LOCATION(state, item) {
-    state.locations.push(item);
-  },
-  SET_EDITED_LOCATION: function SET_EDITED_LOCATION(state, id) {
-    state.editedLocationId = id;
-  },
-  SAVE_LOCATIONS: function SAVE_LOCATIONS(state, locations) {
-    state.locations = locations;
-  },
-  SAVE_ERROR: function SAVE_ERROR(state, errMsg) {
-    state.errMsg = errMsg;
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/assets/front/js/vue/src/store/locations/state.js":
-/*!********************************************************************!*\
-  !*** ./resources/assets/front/js/vue/src/store/locations/state.js ***!
-  \********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  locations: [],
-  editedLocationId: null,
   errMsg: null
 });
 
@@ -8136,66 +7480,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../api */ "./resources/assets/front/js/vue/src/api/index.js");
+/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api */ "./resources/assets/front/js/vue/src/api/index.js");
 
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  getLocationsAndCourses: function getLocationsAndCourses(_ref) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-      var commit, _yield$Promise$all, _yield$Promise$all2, locations, courses;
-
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              commit = _ref.commit;
-              _context.prev = 1;
-              _context.next = 4;
-              return Promise.all([_api__WEBPACK_IMPORTED_MODULE_1__.default.getLocations(), _api__WEBPACK_IMPORTED_MODULE_1__.default.getCourses()]);
-
-            case 4:
-              _yield$Promise$all = _context.sent;
-              _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 2);
-              locations = _yield$Promise$all2[0];
-              courses = _yield$Promise$all2[1];
-              commit('locations/SAVE_LOCATIONS', locations);
-              commit('courses/SAVE_COURSES', courses);
-              _context.next = 15;
-              break;
-
-            case 12:
-              _context.prev = 12;
-              _context.t0 = _context["catch"](1);
-              commit('courses/SAVE_ERROR', _context.t0);
-
-            case 15:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[1, 12]]);
-    }))();
-  }
-});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
 
@@ -8211,33 +7498,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _helpers_dateTime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/helpers/dateTime */ "./resources/assets/front/js/vue/src/helpers/dateTime.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  getCoursesWithLocationTitles: function getCoursesWithLocationTitles(state, getters) {
-    return state.courses.courses.map(function (_ref) {
-      var created_at = _ref.created_at,
-          updated_at = _ref.updated_at,
-          locations = _ref.locations,
-          rest = _objectWithoutProperties(_ref, ["created_at", "updated_at", "locations"]);
-
-      return _objectSpread(_objectSpread({}, rest), {}, {
-        createdAt: (0,_helpers_dateTime__WEBPACK_IMPORTED_MODULE_0__.dateStr2yyyymmdd)(created_at),
-        updatedAt: (0,_helpers_dateTime__WEBPACK_IMPORTED_MODULE_0__.dateStr2yyyymmdd)(updated_at),
-        locations: getters['locations/getLocationTitles'](locations).join(', ')
-      });
-    });
-  }
-});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
 
@@ -8255,12 +7517,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../api */ "./resources/assets/front/js/vue/src/api/index.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -8300,9 +7556,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, _callee, null, [[1, 8]]);
     }))();
   },
-  createJob: function createJob(_ref2, title) {
+  getUserVehicle: function getUserVehicle(_ref2, id) {
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-      var commit, jobs;
+      var commit, userVehicle;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
@@ -8310,103 +7566,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               commit = _ref2.commit;
               _context2.prev = 1;
               _context2.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.postJob(title);
+              return _api__WEBPACK_IMPORTED_MODULE_1__.default.getUserVehicle(id);
 
             case 4:
-              _context2.next = 6;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.getJobs();
-
-            case 6:
-              jobs = _context2.sent;
-              commit('SAVE_JOBS', jobs);
-              _context2.next = 13;
+              userVehicle = _context2.sent;
+              commit('SAVE_USER_VEHICLE', userVehicle);
+              _context2.next = 11;
               break;
 
-            case 10:
-              _context2.prev = 10;
+            case 8:
+              _context2.prev = 8;
               _context2.t0 = _context2["catch"](1);
               commit('SAVE_ERROR', _context2.t0);
 
-            case 13:
+            case 11:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[1, 10]]);
-    }))();
-  },
-  editVehicle: function editVehicle(_ref3, id) {
-    var commit = _ref3.commit,
-        state = _ref3.state;
-    var cancelJobEditing = state.editedJobId === id;
-
-    if (cancelJobEditing) {
-      commit('SET_EDITED_JOB', null);
-    } else {
-      commit('SET_EDITED_JOB', id);
-    }
-  },
-  updateJob: function updateJob(_ref4, formData) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
-      var commit, dispatch, state;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
-        while (1) {
-          switch (_context3.prev = _context3.next) {
-            case 0:
-              commit = _ref4.commit, dispatch = _ref4.dispatch, state = _ref4.state;
-              _context3.prev = 1;
-              _context3.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.patchJob(_objectSpread(_objectSpread({}, formData), {}, {
-                id: state.editedJobId
-              }));
-
-            case 4:
-              commit('SET_EDITED_JOB', null);
-              dispatch('getJobs');
-              _context3.next = 11;
-              break;
-
-            case 8:
-              _context3.prev = 8;
-              _context3.t0 = _context3["catch"](1);
-              commit('SAVE_ERROR', _context3.t0);
-
-            case 11:
-            case "end":
-              return _context3.stop();
-          }
-        }
-      }, _callee3, null, [[1, 8]]);
-    }))();
-  },
-  deleteVehicle: function deleteVehicle(_ref5, id) {
-    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-      var commit, dispatch;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
-        while (1) {
-          switch (_context4.prev = _context4.next) {
-            case 0:
-              commit = _ref5.commit, dispatch = _ref5.dispatch;
-              _context4.prev = 1;
-              _context4.next = 4;
-              return _api__WEBPACK_IMPORTED_MODULE_1__.default.deleteJob(id);
-
-            case 4:
-              dispatch('getJobs');
-              _context4.next = 10;
-              break;
-
-            case 7:
-              _context4.prev = 7;
-              _context4.t0 = _context4["catch"](1);
-              commit('SAVE_ERROR', _context4.t0);
-
-            case 10:
-            case "end":
-              return _context4.stop();
-          }
-        }
-      }, _callee4, null, [[1, 7]]);
+      }, _callee2, null, [[1, 8]]);
     }))();
   }
 });
@@ -8425,46 +7603,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  getVehicleTitles: function getVehicleTitles(state) {
-    return function (vehicles) {
-      return vehicles.map(function (vehicle) {
-        return state.vehicles.find(function (stateVehicle) {
-          return stateVehicle.id === vehicle.id;
-        }).title;
-      });
-    };
-  },
-  getEditedVehicleId: function getEditedVehicleId(state) {
-    var _state$editedLocation;
-
-    return (_state$editedLocation = state.editedLocationId) !== null && _state$editedLocation !== void 0 ? _state$editedLocation : false;
-  },
-  getLocationIsEdited: function getLocationIsEdited(state) {
-    return !!state.editedLocationId;
-  },
-  getEditedLocation: function getEditedLocation(state) {
-    var _state$locations$find;
-
-    return (_state$locations$find = state.locations.find(function (_ref) {
-      var id = _ref.id;
-      return id === state.editedLocationId;
-    })) !== null && _state$locations$find !== void 0 ? _state$locations$find : false;
-  },
   getVehicles: function getVehicles(state) {
     return state.vehicles;
   },
-  getState: function getState(state) {
-    return state;
-  },
-  getLocationTitlesAndIds: function getLocationTitlesAndIds(state) {
-    return state.locations.map(function (_ref2) {
-      var id = _ref2.id,
-          title = _ref2.title;
-      return {
-        id: id,
-        title: title
-      };
-    });
+  getUserVehicle: function getUserVehicle(state) {
+    return state.userVehicle;
   }
 });
 
@@ -8511,14 +7654,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  ADD_VEHICLE: function ADD_VEHICLE(state, item) {
-    state.vehicles.push(item);
-  },
-  SET_EDITED_VEHICLE: function SET_EDITED_VEHICLE(state, id) {
-    state.editedVehicleId = id;
-  },
   SAVE_VEHICLES: function SAVE_VEHICLES(state, vehicles) {
     state.vehicles = vehicles;
+  },
+  SAVE_USER_VEHICLE: function SAVE_USER_VEHICLE(state, userVehicle) {
+    state.userVehicle = userVehicle;
   },
   SAVE_ERROR: function SAVE_ERROR(state, errMsg) {
     state.errMsg = errMsg;
@@ -8540,7 +7680,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   vehicles: [],
-  editedVehicleId: null,
+  userVehicle: [],
   errMsg: null
 });
 

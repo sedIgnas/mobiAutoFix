@@ -1,5 +1,7 @@
 export default {
-  jobs: [],
-  editedJobId: null,
-  errMsg: null,
+    jobs: [],
+    job: [],
+    userVehicle: [],
+    editedJobId: null,
+    errMsg: null,
 };

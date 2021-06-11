@@ -3,13 +3,16 @@ export default {
         state.jobs.push(item);
     },
 
-    SET_EDITED_ADD_JOB(state, id) {
-        state.editedJobId = id;
-    },
-
     SAVE_JOBS(state, jobs) {
         state.jobs = jobs;
-        console.log(state.jobs);
+    },
+
+    SAVE_JOB(state, job) {
+        state.job = job;
+    },
+
+    SAVE_USER_VEHICLE(state, userVehicle) {
+        state.userVehicle = userVehicle;
     },
 
     SAVE_ERROR(state, errMsg) {
